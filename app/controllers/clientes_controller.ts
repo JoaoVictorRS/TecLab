@@ -11,7 +11,11 @@ export default class ClientesController {
     }
   
     async show({params}: HttpContext){
-      return await Cliente.findOrFail(params.id)
+      return await Cliente.query()
+      .where('id', params.id)
+      .preload('cartao')
+      .preload('endereco')
+      .first()
     }
     
     async store({request}: HttpContext){

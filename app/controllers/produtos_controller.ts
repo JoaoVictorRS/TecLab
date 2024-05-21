@@ -11,7 +11,12 @@ export default class ProdutosController {
     }
   
     async show({params}: HttpContext){
-      return await Produto.findOrFail(params.id)
+      return await Produto.query()
+      .where('id', params.id)
+      .preload('categoria')
+      .preload('estoque')
+      .preload('pedidos')
+      .first()
     }
     
     async store({request}: HttpContext){

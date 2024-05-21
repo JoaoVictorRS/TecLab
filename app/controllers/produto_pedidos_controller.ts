@@ -11,7 +11,11 @@ export default class ProdutoPedidosController {
     }
   
     async show({params}: HttpContext){
-      return await ProdutoPedido.findOrFail(params.id)
+      return await ProdutoPedido.query()
+      .where('id', params.id)
+      .preload('pedido')
+      .preload('produto')
+      .first()
     }
     
     async store({request}: HttpContext){

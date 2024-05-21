@@ -11,7 +11,12 @@ export default class PedidosController {
     }
   
     async show({params}: HttpContext){
-      return await Pedido.findOrFail(params.id)
+      return await Pedido.query()
+      .where('id', params.id)
+      .preload('cliente')
+      .preload('produtos')
+      .preload('entrega')
+      .first()
     }
     
     async store({request}: HttpContext){

@@ -11,7 +11,10 @@ export default class EnderecosController {
     }
   
     async show({params}: HttpContext){
-      return await Endereco.findOrFail(params.id)
+      return await Endereco.query()
+      .where('id', params.id)
+      .preload('cliente')
+      .first()
     }
     
     async store({request}: HttpContext){

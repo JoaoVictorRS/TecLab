@@ -11,7 +11,10 @@ export default class CategoriasController {
     }
   
     async show({params}: HttpContext){
-      return await Categoria.findOrFail(params.id)
+      return await Categoria.query()
+      .where('id', params.id)
+      .preload('produtos')
+      .first()
     }
     
     async store({request}: HttpContext){

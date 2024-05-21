@@ -11,7 +11,10 @@ export default class EntregasController {
     }
   
     async show({params}: HttpContext){
-      return await Entrega.findOrFail(params.id)
+      return await Entrega.query()
+      .where('id', params.id)
+      .preload('pedido')
+      .first()
     }
     
     async store({request}: HttpContext){

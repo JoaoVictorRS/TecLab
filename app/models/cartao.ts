@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
-import {BaseModel, belongsTo, column} from '@adonisjs/lucid/orm'
-import type { BelongsTo} from '@adonisjs/lucid/types/relations'
+import {BaseModel, column, hasMany} from '@adonisjs/lucid/orm'
+import type { HasMany} from '@adonisjs/lucid/types/relations'
 import Cliente from './cliente.js'
 
 export default class Cartao extends BaseModel {
@@ -25,6 +25,6 @@ export default class Cartao extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @belongsTo(()=>Cliente)
-  declare cliente: BelongsTo<typeof Cliente>
+  @hasMany(()=>Cliente)
+  declare cliente: HasMany<typeof Cliente>
 }
