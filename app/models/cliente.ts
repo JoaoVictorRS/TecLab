@@ -1,5 +1,8 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
+import Cartao from './cartao.js'
+import Endereco from './endereco.js'
 
 export default class Cliente extends BaseModel {
   @column({ isPrimary: true })
@@ -25,4 +28,10 @@ export default class Cliente extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  @hasMany(()=>Cartao)
+  declare cartao: HasMany<typeof Cartao>
+
+  @hasMany(()=>Endereco)
+  declare endereco: HasMany<typeof Endereco>
 }
