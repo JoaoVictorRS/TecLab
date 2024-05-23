@@ -15,7 +15,7 @@ export default class ProdutosController {
       .where('id', params.id)
       .preload('categoria')
       .preload('estoque')
-      .preload('pedidos')
+      //.preload('pedidos')
       .first()
     }
     
