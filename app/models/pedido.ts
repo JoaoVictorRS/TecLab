@@ -15,7 +15,7 @@ export default class Pedido extends BaseModel {
   @column()
   declare formaPagamento: string
 
-  @column()
+  @column.dateTime()
   declare dataPedido: DateTime
 
   @column()

@@ -10,10 +10,10 @@ export default class Estoque extends BaseModel {
   @column()
   declare quantidade: number
 
-  @column()
+  @column.dateTime()
   declare dataEntrada: DateTime
 
-  @column()
+  @column.dateTime()
   declare dataSaida: DateTime
 
   @column.dateTime({ autoCreate: true })

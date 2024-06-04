@@ -13,7 +13,7 @@ export default class Cartao extends BaseModel {
   @column()
   declare nomeTitular: string
 
-  @column()
+  @column.dateTime()
   declare dataValidade: DateTime
 
   @column()
