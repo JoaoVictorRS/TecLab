@@ -19,7 +19,7 @@ export default class EstoquesController {
     
     async store({request}: HttpContext){
   
-      const dados = request.only(['quantidade', 'dataEntrega', 'dataSaida'])
+      const dados = request.only(['quantidade', 'dataEntrada', 'dataSaida'])
   
       return await Estoque.create(dados)
     }
